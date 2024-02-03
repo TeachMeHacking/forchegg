@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+from matplotlib.animation import FuncAnimation
+
+# Define the initial state
+initial_state = ([1, 2, 3, 4], [], [])
+
+# Function to draw the current state
+def draw_state(state):
+    fig, ax = plt.subplots()
+    ax.set_xlim(0, 4)
+    ax.set_ylim(0, len(initial_state[0]) + 1)
+
+    peg_width = 0.2
+    disc_height = 0.8
+
+    for i, peg in enumerate(state):
+        for j, disc in enumerate(peg):
+            rect = Rectangle((i + 1 - peg_width / 2, j), peg_width, disc_height, edgecolor='black', facecolor='blue')
+            ax.add_patch(rect)
+
+    plt.show()
+
+# Draw the initial state
+draw_state(initial_state)
